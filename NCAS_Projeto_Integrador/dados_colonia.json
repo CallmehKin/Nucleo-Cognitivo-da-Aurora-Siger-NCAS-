@@ -1,0 +1,48 @@
+{
+    "modulos": [
+        {
+            "id": "MOD-01",
+            "nome": "Suporte de Vida (ECLSS)",
+            "status": "Operacional"
+        },
+        {
+            "id": "MOD-02",
+            "nome": "Matriz Energética Solar/Nuclear",
+            "status": "Atencao"
+        }
+    ],
+    "alertas": [
+        {
+            "id_alerta": "ALT-101",
+            "modulo": "Suporte de Vida (ECLSS)",
+            "falha": true,
+            "critico": true,
+            "mensagem": "Queda na pressão de oxigênio no setor B."
+        },
+        {
+            "id_alerta": "ALT-102",
+            "modulo": "Matriz Energética Solar/Nuclear",
+            "falha": true,
+            "critico": false,
+            "mensagem": "Consumo elevado de energia nos módulos de estufa."
+        }
+    ],
+    "prompts": {
+        "resumo_alerta": {
+            "tipo": "Few-Shot / Structured Output",
+            "instrucao": "Resuma o alerta operacional para o centro de controle e retorne um JSON estrito.",
+            "exemplo": "Entrada: {falha: true, critico: true, modulo: 'Agua'} -> Saida: {status_alerta: 'CRITICO', acao_recomendada: 'Inspecionar dutos'}"
+        }
+    },
+    "historico_interacoes": [
+        {
+            "prompt": "Resuma o alerta operacional para o centro de controle e retorne um JSON estrito.\nExemplo: Entrada: {falha: true, critico: true, modulo: 'Agua'} -> Saida: {status_alerta: 'CRITICO', acao_recomendada: 'Inspecionar dutos'}\nEntrada: {'id_alerta': 'ALT-101', 'modulo': 'Suporte de Vida (ECLSS)', 'falha': True, 'critico': True, 'mensagem': 'Queda na pressão de oxigênio no setor B.'}",
+            "resposta": {
+                "status_alerta": "CRÍTICO",
+                "modulo_afetado": "Suporte de Vida (ECLSS)",
+                "mensagem_curta": "Queda na pressão de oxigênio no setor B.",
+                "acao_recomendada": "Deslocar equipe técnica imediatamente."
+            }
+        }
+    ]
+}
